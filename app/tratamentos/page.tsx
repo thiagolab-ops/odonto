@@ -18,7 +18,7 @@ export default async function TratamentosPage({ searchParams }: { searchParams: 
             </header>
 
             <div className="p-4 grid grid-cols-1 md:grid-cols-2 gap-4">
-                {treatments.map((t) => (
+                {treatments.map((t: any) => (
                     <Link href={`/tratamentos/${t.id}`} key={t.id} className="block group">
                         <div className="flex flex-col overflow-hidden rounded-2xl bg-white shadow-sm border border-slate-100 transition-transform hover:-translate-y-1">
                             <div className="relative h-48 w-full overflow-hidden bg-slate-100">
