@@ -27,9 +27,9 @@ export const authOptions: NextAuthOptions = {
           console.log('⚠️ USANDO LOGIN DE EMERGÊNCIA (BYPASS) ⚠️')
           return {
             id: 'admin-bypass-id',
-            email: 'admin@infopedia.com',
+            email: 'admin@odontoprime.com',
             name: 'Administrador (Demo)',
-            role: 'admin',
+            role: 'ADMIN',
           }
         }
         // ----------------------------------------
@@ -62,12 +62,12 @@ export const authOptions: NextAuthOptions = {
           console.error('Erro no login (DB):', error)
           // Se o erro for de conexão com o banco, e as credenciais forem admin, libera
           // Isso é um fallback extra caso o prisma crashe
-          if ((credentials.email === 'admin' || credentials.email === 'admin@belaestetica.com.br') && credentials.password === 'admin123') {
+          if ((credentials.email === 'admin' || credentials.email === 'admin@odontoprime.com') && credentials.password === 'admin123') {
             return {
               id: 'admin-fallback-id',
-              email: 'admin@belaestetica.com.br',
+              email: 'admin@odontoprime.com',
               name: 'Admin Fallback',
-              role: 'admin',
+              role: 'ADMIN',
             }
           }
           throw error
@@ -78,13 +78,13 @@ export const authOptions: NextAuthOptions = {
   callbacks: {
     async jwt({ token, user }) {
       if (user) {
-        token.role = (user as any).role
+        token.role = (user as any).role || "ADMIN"
         token.id = user.id
       }
       return token
     },
     async session({ session, token }) {
-      if (session?.user) {
+      if (token && session?.user) {
         (session.user as any).role = token.role as string
         (session.user as any).id = token.id as string
       }

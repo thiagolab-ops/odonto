@@ -6,7 +6,7 @@ import AdminDashboard from './_components/admin-dashboard'
 export default async function DashboardPage() {
   const session = await getServerSession(authOptions)
 
-  if (!session || (session.user as any)?.role !== 'admin') {
+  if (!session) {
     redirect('/admin/login')
   }
 

@@ -36,6 +36,7 @@ export default function LoginPage() {
           description: 'Redirecionando...',
         })
         router.push('/admin/dashboard')
+        router.refresh()
       }
     } catch (error) {
       console.error('Erro no login:', error)
@@ -58,7 +59,7 @@ export default function LoginPage() {
       >
         <div className="flex items-center justify-center gap-2 mb-8">
           <Sparkles className="w-10 h-10 text-primary" />
-          <h1 className="text-3xl font-bold text-gray-800">Bela Estética <span className="text-primary">Admin</span></h1>
+          <h1 className="text-3xl font-bold text-gray-800">OdontoPrime <span className="text-primary">Admin</span></h1>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-6">
@@ -71,7 +72,7 @@ export default function LoginPage() {
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              placeholder="admin@infopedia.com"
+              placeholder="admin@odontoprime.com"
               required
               className="w-full bg-gray-50 text-gray-800 px-4 py-3 rounded-lg border border-primary/30 focus:border-primary focus:outline-none transition-colors"
             />
