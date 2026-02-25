@@ -13,15 +13,15 @@ const metadataBase = process.env.NEXTAUTH_URL
   ? new URL(process.env.NEXTAUTH_URL)
   : new URL('http://localhost:3000')
 
-const appName = process.env.NEXT_PUBLIC_APP_NAME || 'Luxe Motors'
-const appDescription = process.env.NEXT_PUBLIC_APP_DESCRIPTION || 'Concessionária de Luxo'
-const themeColor = process.env.NEXT_PUBLIC_THEME_COLOR || '#f59f0a'
+const appName = process.env.NEXT_PUBLIC_APP_NAME || 'OdontoPrime'
+const appDescription = process.env.NEXT_PUBLIC_APP_DESCRIPTION || 'Clínica Odontológica Premium'
+const themeColor = process.env.NEXT_PUBLIC_THEME_COLOR || '#0ea5e9'
 const secondaryColor = process.env.NEXT_PUBLIC_SECONDARY_COLOR || '#181511'
 
 export const metadata: Metadata = {
   metadataBase,
-  title: `${appName} - ${appDescription}`,
-  description: appDescription,
+  title: "OdontoPrime - Clínica Odontológica Premium",
+  description: "Transforme seu sorriso com a OdontoPrime. Agende sua avaliação gratuita.",
   manifest: '/manifest.json',
   icons: {
     icon: '/favicon.svg',
@@ -57,7 +57,7 @@ export default function RootLayout({
   const secondaryHsl = hexToHsl(secondaryColor)
 
   return (
-    <html lang="pt-BR" suppressHydrationWarning className="dark">
+    <html lang="pt-BR" suppressHydrationWarning>
       <head>
         <meta charSet="utf-8" />
         <meta name="theme-color" content={themeColor} />
@@ -98,13 +98,13 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className="bg-background-dark text-slate-100 font-display antialiased">
+      <body className="bg-[#f8fafc] text-slate-900 font-sans antialiased">
         <SessionProviderWrapper>
           <ThemeProvider
             attribute="class"
-            defaultTheme="dark"
+            defaultTheme="light"
             enableSystem={false}
-            forcedTheme="dark"
+            forcedTheme="light"
           >
             <CartProvider>
               {children}

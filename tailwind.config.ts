@@ -20,8 +20,21 @@ const config: Config = {
         sm: 'calc(var(--radius) - 4px)',
       },
       colors: {
-        background: '#FDFBFB',
-        foreground: 'hsl(var(--foreground))',
+        background: "hsl(var(--background))",
+        foreground: "hsl(var(--foreground))",
+        primary: {
+          DEFAULT: "hsl(var(--primary))",
+          foreground: "hsl(var(--primary-foreground))",
+        },
+        secondary: {
+          DEFAULT: "hsl(var(--secondary))",
+          foreground: "hsl(var(--secondary-foreground))",
+        },
+        "background-dark": "#0f172a",
+        "background-light": "#f8fafc",
+        "surface-dark": "#161b22",
+        "surface-border": "#30363d",
+        "text-primary": "#f0f6fc",
         card: {
           DEFAULT: 'hsl(var(--card))',
           foreground: 'hsl(var(--card-foreground))',
@@ -30,18 +43,8 @@ const config: Config = {
           DEFAULT: 'hsl(var(--popover))',
           foreground: 'hsl(var(--popover-foreground))',
         },
-        primary: {
-          DEFAULT: '#07b6d5',
-          foreground: 'hsl(var(--primary-foreground))',
-        },
-        secondary: {
-          DEFAULT: '#0f2023',
-          foreground: 'hsl(var(--secondary-foreground))',
-        },
-        "background-light": "#f5f8f8",
-        "background-dark": "#0f2023",
-        "text-main": "#111718",
-        "text-muted": "#5f858c",
+        "text-main": "#0f172a",
+        "text-muted": "#64748b",
         muted: {
           DEFAULT: 'hsl(var(--muted))',
           foreground: 'hsl(var(--muted-foreground))',
@@ -65,10 +68,6 @@ const config: Config = {
           '5': 'hsl(var(--chart-5))',
         },
         'primary-dark': '#b45309',
-        'background-dark': '#181511',
-        'surface-dark': '#221c10',
-        'surface-border': '#544b3b',
-        'text-secondary': '#baaf9c',
       },
       fontFamily: {
         display: ["Plus Jakarta Sans", "sans-serif"],

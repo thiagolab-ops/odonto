@@ -118,16 +118,16 @@ export default function AgendamentoPage() {
 
     if (isSuccess) {
         return (
-            <div className="min-h-screen bg-background-dark flex flex-col items-center justify-center p-4">
-                <div className="bg-surface-dark border border-surface-border p-8 rounded-2xl max-w-md text-center">
+            <div className="min-h-screen bg-slate-50 flex flex-col items-center justify-center p-4">
+                <div className="bg-white border border-slate-200 shadow-sm p-8 rounded-2xl max-w-md text-center">
                     <div className="w-20 h-20 bg-green-500/20 text-green-500 rounded-full flex items-center justify-center mx-auto mb-6">
                         <span className="material-symbols-outlined text-4xl">check</span>
                     </div>
-                    <h2 className="text-2xl font-black text-white uppercase mb-2">Agendamento Solicitado!</h2>
-                    <p className="text-text-secondary mb-8">
+                    <h2 className="text-2xl font-black text-slate-900 uppercase mb-2">Agendamento Solicitado!</h2>
+                    <p className="text-slate-600 mb-8">
                         Seu pedido para <strong>{service}</strong> foi recebido. Um de nossos consultores entrará em contato em breve para confirmar os detalhes.
                     </p>
-                    <Link href="/tratamentos" className="bg-primary text-background-dark font-bold px-8 py-3 rounded-xl uppercase tracking-wider block hover:bg-primary-dark transition">
+                    <Link href="/tratamentos" className="bg-primary text-white hover:bg-blue-600 font-bold px-8 py-3 rounded-xl uppercase tracking-wider block transition">
                         Voltar para a Vitrine
                     </Link>
                 </div>
@@ -139,31 +139,31 @@ export default function AgendamentoPage() {
     const monthNames = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"]
 
     return (
-        <div className="min-h-screen bg-background-dark text-white pt-24 pb-12 px-4">
+        <div className="min-h-screen bg-slate-50 text-slate-900 pt-24 pb-12 px-4">
             <div className="max-w-4xl mx-auto flex flex-col gap-8">
 
                 <div className="text-center md:text-left">
-                    <Link href="/tratamentos" className="text-text-secondary hover:text-white flex items-center gap-2 mb-4 justify-center md:justify-start">
+                    <Link href="/tratamentos" className="text-slate-500 hover:text-slate-900 flex items-center gap-2 mb-4 justify-center md:justify-start">
                         <span className="material-symbols-outlined text-sm">arrow_back</span>
                         Voltar
                     </Link>
-                    <h1 className="text-4xl font-black uppercase tracking-tight">Agendar <span className="text-primary">Consulta/Avaliação</span></h1>
-                    <p className="text-text-secondary mt-2">Escolha o serviço desejado, o tratamento e o melhor horário para você.</p>
+                    <h1 className="text-4xl font-black uppercase tracking-tight text-slate-900">Agendar <span className="text-primary">Consulta/Avaliação</span></h1>
+                    <p className="text-slate-500 mt-2">Escolha o serviço desejado, o tratamento e o melhor horário para você.</p>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                     {/* LEFTSIDE: FORM DETAILS */}
-                    <form onSubmit={handleSubmit} className="bg-surface-dark border border-surface-border rounded-2xl p-6 flex flex-col gap-6">
+                    <form onSubmit={handleSubmit} className="bg-white border border-slate-200 shadow-sm rounded-2xl p-6 flex flex-col gap-6">
 
                         <div>
-                            <label className="block text-sm font-bold text-gray-300 uppercase tracking-wider mb-2">Serviço Desejado</label>
+                            <label className="block text-sm font-bold text-slate-500 uppercase tracking-wider mb-2">Serviço Desejado</label>
                             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                                 {["Avaliação", "Procedimento", "Retorno"].map(s => (
                                     <button
                                         type="button"
                                         key={s}
                                         onClick={() => setService(s)}
-                                        className={`py-3 px-2 rounded-xl text-sm font-bold uppercase transition-all ${service === s ? 'bg-primary text-black shadow-[0_0_15px_rgba(245,159,10,0.3)]' : 'bg-background-dark border border-surface-border text-gray-400 hover:border-primary/50'}`}
+                                        className={`py-3 px-2 rounded-xl text-sm font-bold uppercase transition-all ${service === s ? 'bg-primary text-white shadow-md' : 'bg-slate-50 border border-slate-200 text-slate-500 hover:border-primary/50'}`}
                                     >
                                         {s}
                                     </button>
@@ -173,14 +173,14 @@ export default function AgendamentoPage() {
 
                         {(service === 'Avaliação' || service === 'Procedimento') && (
                             <div>
-                                <label className="block text-sm font-bold text-gray-300 uppercase tracking-wider mb-2">Tratamento de Interesse</label>
+                                <label className="block text-sm font-bold text-slate-500 uppercase tracking-wider mb-2">Tratamento de Interesse</label>
                                 {loading ? (
-                                    <div className="p-3 bg-background-dark rounded-xl border border-surface-border animate-pulse h-12"></div>
+                                    <div className="p-3 bg-slate-50 rounded-xl border border-slate-200 animate-pulse h-12"></div>
                                 ) : (
                                     <select
                                         value={treatmentId}
                                         onChange={e => setTreatmentId(e.target.value)}
-                                        className="w-full bg-background-dark border border-surface-border rounded-xl p-3 text-white appearance-none focus:border-primary outline-none transition"
+                                        className="w-full bg-slate-50 border border-slate-200 rounded-xl p-3 text-slate-900 appearance-none focus:border-primary outline-none transition"
                                     >
                                         <option value="">Nenhum específico</option>
                                         {treatments.map(t => (
@@ -191,27 +191,27 @@ export default function AgendamentoPage() {
                             </div>
                         )}
 
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 border-t border-surface-border/50 pt-6">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 border-t border-slate-200 pt-6">
                             <div>
-                                <label className="block text-sm font-bold text-gray-300 uppercase tracking-wider mb-2">Seu Nome</label>
+                                <label className="block text-sm font-bold text-slate-500 uppercase tracking-wider mb-2">Seu Nome</label>
                                 <input
                                     type="text"
                                     required
                                     value={customerName}
                                     onChange={e => setCustomerName(e.target.value)}
                                     placeholder="Ex: João Silva"
-                                    className="w-full bg-background-dark border border-surface-border rounded-xl p-3 text-white focus:border-primary outline-none transition"
+                                    className="w-full bg-slate-50 border border-slate-200 rounded-xl p-3 text-slate-900 focus:border-primary outline-none transition"
                                 />
                             </div>
                             <div>
-                                <label className="block text-sm font-bold text-gray-300 uppercase tracking-wider mb-2">Telefone (WhatsApp)</label>
+                                <label className="block text-sm font-bold text-slate-500 uppercase tracking-wider mb-2">Telefone (WhatsApp)</label>
                                 <input
                                     type="tel"
                                     required
                                     value={customerPhone}
                                     onChange={e => setCustomerPhone(e.target.value)}
                                     placeholder="(11) 99999-9999"
-                                    className="w-full bg-background-dark border border-surface-border rounded-xl p-3 text-white focus:border-primary outline-none transition"
+                                    className="w-full bg-slate-50 border border-slate-200 rounded-xl p-3 text-slate-900 focus:border-primary outline-none transition"
                                 />
                             </div>
                         </div>
@@ -221,7 +221,7 @@ export default function AgendamentoPage() {
                             <button
                                 type="submit"
                                 disabled={isSubmitting || !selectedDate || !selectedTime}
-                                className="w-full bg-primary text-black font-black uppercase tracking-widest py-4 rounded-xl hover:bg-primary-dark transition disabled:opacity-50 disabled:cursor-not-allowed"
+                                className="w-full bg-primary text-white font-black uppercase tracking-widest py-4 rounded-xl hover:bg-blue-600 transition disabled:opacity-50 disabled:cursor-not-allowed shadow-sm"
                             >
                                 {isSubmitting ? 'Processando...' : 'Confirmar Agendamento'}
                             </button>
@@ -232,19 +232,19 @@ export default function AgendamentoPage() {
                     <div className="flex flex-col gap-6">
 
                         {/* CALENDAR */}
-                        <div className="bg-surface-dark border border-surface-border rounded-2xl p-6">
+                        <div className="bg-white border border-slate-200 shadow-sm rounded-2xl p-6">
                             <div className="flex justify-between items-center mb-6">
-                                <h3 className="font-bold uppercase tracking-wider">Data</h3>
+                                <h3 className="font-bold uppercase tracking-wider text-slate-900">Data</h3>
                                 <div className="flex items-center gap-4 text-primary">
-                                    <button onClick={() => handleMonthChange(-1)} className="hover:text-white transition"><span className="material-symbols-outlined">chevron_left</span></button>
-                                    <span className="font-bold w-32 text-center text-white">{monthNames[currentMonth.getMonth()]} {currentMonth.getFullYear()}</span>
-                                    <button onClick={() => handleMonthChange(1)} className="hover:text-white transition"><span className="material-symbols-outlined">chevron_right</span></button>
+                                    <button onClick={() => handleMonthChange(-1)} className="hover:text-blue-600 transition"><span className="material-symbols-outlined">chevron_left</span></button>
+                                    <span className="font-bold w-32 text-center text-slate-900">{monthNames[currentMonth.getMonth()]} {currentMonth.getFullYear()}</span>
+                                    <button onClick={() => handleMonthChange(1)} className="hover:text-blue-600 transition"><span className="material-symbols-outlined">chevron_right</span></button>
                                 </div>
                             </div>
 
                             <div className="grid grid-cols-7 gap-1 text-center mb-2">
                                 {['D', 'S', 'T', 'Q', 'Q', 'S', 'S'].map(d => (
-                                    <div key={d} className="text-xs text-text-secondary font-bold py-2">{d}</div>
+                                    <div key={d} className="text-xs text-slate-500 font-bold py-2">{d}</div>
                                 ))}
                             </div>
                             <div className="grid grid-cols-7 gap-1 text-center">
@@ -261,8 +261,8 @@ export default function AgendamentoPage() {
                                             onClick={() => { setSelectedDate(date); setSelectedTime(''); }}
                                             className={`
                                                 aspect-square flex items-center justify-center rounded-lg text-sm transition-all
-                                                ${isPast ? 'text-gray-600 cursor-not-allowed' : 'hover:bg-primary/20'}
-                                                ${isSelected ? 'bg-primary text-black font-bold shadow-[0_0_10px_rgba(245,159,10,0.5)]' : 'text-gray-300'}
+                                                ${isPast ? 'text-slate-300 cursor-not-allowed' : 'hover:bg-slate-100'}
+                                                ${isSelected ? 'bg-primary text-white font-bold shadow-md' : 'text-slate-700'}
                                             `}
                                         >
                                             {date.getDate()}
@@ -273,8 +273,8 @@ export default function AgendamentoPage() {
                         </div>
 
                         {/* TIME SLOTS */}
-                        <div className="bg-surface-dark border border-surface-border rounded-2xl p-6">
-                            <h3 className="font-bold uppercase tracking-wider mb-6">Horário</h3>
+                        <div className="bg-white border border-slate-200 shadow-sm rounded-2xl p-6">
+                            <h3 className="font-bold uppercase tracking-wider mb-6 text-slate-900">Horário</h3>
                             {selectedDate ? (
                                 <div className="grid grid-cols-4 sm:grid-cols-4 gap-3">
                                     {AVAILABLE_TIMES.map(time => (
@@ -284,7 +284,7 @@ export default function AgendamentoPage() {
                                             onClick={() => setSelectedTime(time)}
                                             className={`
                                                 py-2 rounded-lg text-sm font-bold transition-all
-                                                ${selectedTime === time ? 'bg-primary text-black border border-primary' : 'bg-background-dark border border-surface-border text-gray-400 hover:border-primary/50'}
+                                                ${selectedTime === time ? 'bg-primary text-white border border-primary shadow-sm' : 'bg-slate-50 border border-slate-200 text-slate-500 hover:border-primary/50'}
                                             `}
                                         >
                                             {time}
@@ -292,7 +292,7 @@ export default function AgendamentoPage() {
                                     ))}
                                 </div>
                             ) : (
-                                <p className="text-text-secondary text-sm italic text-center py-6">
+                                <p className="text-slate-500 text-sm italic text-center py-6">
                                     Selecione uma data no calendário para ver os horários.
                                 </p>
                             )}
@@ -303,7 +303,7 @@ export default function AgendamentoPage() {
                             <button
                                 onClick={handleSubmit}
                                 disabled={isSubmitting || !selectedDate || !selectedTime}
-                                className="w-full bg-primary text-black font-black uppercase tracking-widest py-4 rounded-xl hover:bg-primary-dark transition disabled:opacity-50 disabled:cursor-not-allowed"
+                                className="w-full bg-primary text-white font-black uppercase tracking-widest py-4 rounded-xl hover:bg-blue-600 transition disabled:opacity-50 disabled:cursor-not-allowed shadow-sm"
                             >
                                 {isSubmitting ? 'Processando...' : 'Confirmar Agendamento'}
                             </button>

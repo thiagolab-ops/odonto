@@ -13,7 +13,7 @@ type Message = {
 const INITIAL_MESSAGE: Message = {
     id: '1',
     role: 'assistant',
-    content: 'Olá! Sou seu consultor exclusivo Luxe Motors. Como posso ajudar você a encontrar seu próximo veículo hoje?'
+    content: 'Olá! Sou a assistente virtual da OdontoPrime. Como posso ajudar você a conquistar o sorriso dos seus sonhos hoje?'
 }
 
 export default function ChatPage() {
@@ -77,15 +77,15 @@ export default function ChatPage() {
     }
 
     return (
-        <div className="flex flex-col h-screen bg-background-dark max-w-screen-md mx-auto shadow-2xl relative overflow-hidden">
+        <div className="flex flex-col h-screen bg-background-light max-w-screen-md mx-auto shadow-2xl relative overflow-hidden">
 
             {/* Header */}
-            <header className="flex items-center justify-between p-4 bg-surface-dark border-b border-surface-border sticky top-0 z-10 shrink-0">
-                <Link href="/" className="p-2 hover:bg-white/5 rounded-full text-text-secondary hover:text-white transition">
+            <header className="flex items-center justify-between p-4 bg-white border-b border-slate-200 sticky top-0 z-10 shrink-0">
+                <Link href="/" className="p-2 hover:bg-slate-100 rounded-full text-slate-500 hover:text-slate-900 transition">
                     <ArrowLeft className="w-6 h-6" />
                 </Link>
                 <div className="flex flex-col items-center">
-                    <h1 className="text-white font-bold tracking-widest uppercase text-sm">Consultor AI</h1>
+                    <h1 className="text-slate-900 font-bold tracking-widest uppercase text-sm">Assistente OdontoPrime</h1>
                     <span className="text-primary text-[10px] font-bold uppercase tracking-widest flex items-center gap-1">
                         <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></span>
                         Online
@@ -102,15 +102,15 @@ export default function ChatPage() {
                         className={`flex items-end gap-2 ${message.role === 'user' ? 'flex-row-reverse' : 'flex-row'}`}
                     >
                         {/* Avatar */}
-                        <div className={`shrink-0 w-8 h-8 rounded-full flex items-center justify-center ${message.role === 'user' ? 'bg-primary text-black' : 'bg-surface-dark border border-surface-border text-primary'}`}>
+                        <div className={`shrink-0 w-8 h-8 rounded-full flex items-center justify-center ${message.role === 'user' ? 'bg-primary text-white' : 'bg-white border border-slate-200 text-primary'}`}>
                             {message.role === 'user' ? <User className="w-4 h-4" /> : <Bot className="w-4 h-4" />}
                         </div>
 
                         {/* Bubble */}
                         <div
                             className={`max-w-[75%] px-4 py-3 text-sm leading-relaxed ${message.role === 'user'
-                                    ? 'bg-primary text-black rounded-2xl rounded-tr-sm font-medium shadow-[0_4px_15px_rgba(245,159,10,0.15)]'
-                                    : 'bg-surface-dark border border-surface-border text-gray-200 rounded-2xl rounded-tl-sm'
+                                ? 'bg-primary text-white rounded-2xl rounded-tr-sm font-medium shadow-sm'
+                                : 'bg-white border border-slate-200 text-slate-700 rounded-2xl rounded-tl-sm'
                                 }`}
                         >
                             {/* Simple markdown bolding replacement (Groq might return *text*) */}
@@ -130,10 +130,10 @@ export default function ChatPage() {
 
                 {isLoading && (
                     <div className="flex items-end gap-2 text-primary">
-                        <div className="shrink-0 w-8 h-8 rounded-full flex items-center justify-center bg-surface-dark border border-surface-border">
+                        <div className="shrink-0 w-8 h-8 rounded-full flex items-center justify-center bg-white border border-slate-200">
                             <Bot className="w-4 h-4" />
                         </div>
-                        <div className="bg-surface-dark border border-surface-border px-4 py-3 rounded-2xl rounded-tl-sm flex items-center gap-1">
+                        <div className="bg-white border border-slate-200 px-4 py-3 rounded-2xl rounded-tl-sm flex items-center gap-1">
                             <span className="w-1.5 h-1.5 bg-primary/50 rounded-full animate-bounce" style={{ animationDelay: '0ms' }}></span>
                             <span className="w-1.5 h-1.5 bg-primary/70 rounded-full animate-bounce" style={{ animationDelay: '150ms' }}></span>
                             <span className="w-1.5 h-1.5 bg-primary rounded-full animate-bounce" style={{ animationDelay: '300ms' }}></span>
@@ -145,7 +145,7 @@ export default function ChatPage() {
             </main>
 
             {/* Input Area */}
-            <div className="absolute bottom-0 left-0 right-0 bg-background-dark/80 backdrop-blur-xl border-t border-surface-border p-4">
+            <div className="absolute bottom-0 left-0 right-0 bg-white/80 backdrop-blur-xl border-t border-slate-200 p-4">
                 <form onSubmit={handleSubmit} className="flex gap-2">
                     <input
                         type="text"
@@ -153,12 +153,12 @@ export default function ChatPage() {
                         onChange={(e) => setInput(e.target.value)}
                         placeholder="Escreva sua mensagem..."
                         disabled={isLoading}
-                        className="flex-1 bg-surface-dark border border-surface-border text-white px-4 py-3 rounded-xl focus:outline-none focus:border-primary transition disabled:opacity-50"
+                        className="flex-1 bg-white border border-slate-200 text-slate-800 px-4 py-3 rounded-xl focus:outline-none focus:border-primary transition disabled:opacity-50"
                     />
                     <button
                         type="submit"
                         disabled={!input.trim() || isLoading}
-                        className="bg-primary text-black w-12 h-12 flex flex-shrink-0 items-center justify-center rounded-xl hover:bg-primary-dark transition disabled:opacity-50 disabled:cursor-not-allowed group shadow-[0_0_15px_rgba(245,159,10,0.2)]"
+                        className="bg-primary text-white w-12 h-12 flex flex-shrink-0 items-center justify-center rounded-xl hover:bg-blue-600 transition disabled:opacity-50 disabled:cursor-not-allowed group shadow-sm"
                     >
                         <Send className="w-5 h-5 group-hover:scale-110 transition-transform -ml-0.5 mt-0.5" />
                     </button>
