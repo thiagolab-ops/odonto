@@ -3,48 +3,28 @@
 import { useState } from 'react'
 import { signOut } from 'next-auth/react'
 import { motion } from 'framer-motion'
-import { Sparkles, Package, Percent, Megaphone, Bell, ShoppingBag, LogOut, Settings, Folder, BarChart3, Car } from 'lucide-react'
-import VeiculosTab from './veiculos-tab'
-import CombosTab from './combos-tab'
-import DescontosTab from './descontos-tab'
-import MarketingTab from './marketing-tab'
+import { LogOut, Settings, Calendar, Activity, Sparkles } from 'lucide-react'
+import TratamentosTab from './tratamentos-tab'
 import ConfiguracoesTab from './configuracoes-tab'
-import CategoriasTab from './categorias-tab'
-import FinanceiroTab from './financeiro-tab'
-import PedidosTab from './pedidos-tab'
+import AgendamentosTab from './agendamentos-tab'
 
-type Tab = 'veiculos' | 'categorias' | 'combos' | 'descontos' | 'marketing' | 'pedidos' | 'configuracoes' | 'financeiro'
+type Tab = 'tratamentos' | 'agendamentos' | 'configuracoes'
 
 export default function AdminDashboard() {
-  const [activeTab, setActiveTab] = useState<Tab>('veiculos')
+  const [activeTab, setActiveTab] = useState<Tab>('tratamentos')
 
   const tabs = [
-    { id: 'veiculos', label: 'Veículos', icon: Car },
-    { id: 'categorias', label: 'Categorias', icon: Folder },
-    { id: 'combos', label: 'Combos', icon: Package },
-    { id: 'descontos', label: 'Descontos', icon: Percent },
-    { id: 'marketing', label: 'Marketing', icon: Megaphone },
-    { id: 'pedidos', label: 'Agendamentos', icon: ShoppingBag },
-    { id: 'financeiro', label: 'Financeiro', icon: BarChart3 },
+    { id: 'tratamentos', label: 'Tratamentos', icon: Activity },
+    { id: 'agendamentos', label: 'Agendamentos', icon: Calendar },
     { id: 'configuracoes', label: 'Configurações', icon: Settings },
   ]
 
   const renderTabContent = () => {
     switch (activeTab) {
-      case 'veiculos':
-        return <VeiculosTab />
-      case 'categorias':
-        return <CategoriasTab />
-      case 'combos':
-        return <CombosTab />
-      case 'descontos':
-        return <DescontosTab />
-      case 'marketing':
-        return <MarketingTab />
-      case 'pedidos':
-        return <PedidosTab />
-      case 'financeiro':
-        return <FinanceiroTab />
+      case 'tratamentos':
+        return <TratamentosTab />
+      case 'agendamentos':
+        return <AgendamentosTab />
       case 'configuracoes':
         return <ConfiguracoesTab />
       default:
@@ -53,13 +33,13 @@ export default function AdminDashboard() {
   }
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-slate-50">
       <header className="bg-white border-b border-primary/20 sticky top-0 z-50 shadow-sm">
         <div className="container max-w-7xl mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <h1 className="text-3xl font-bold text-gray-800 flex items-center gap-2">
-              <Car className="w-8 h-8 text-primary" />
-              Luxe Motors <span className="text-primary">Admin</span>
+              <Sparkles className="w-8 h-8 text-primary" />
+              OdontoPrime <span className="text-primary">Admin</span>
             </h1>
             <button
               onClick={() => signOut({ callbackUrl: '/admin/login' })}
@@ -75,7 +55,7 @@ export default function AdminDashboard() {
       <div className="container max-w-7xl mx-auto px-4 py-8">
         <div className="flex flex-col lg:flex-row gap-6">
           <aside className="lg:w-64 flex-shrink-0">
-            <nav className="bg-gray-800 rounded-xl border border-primary/30 p-4 sticky top-24">
+            <nav className="bg-white rounded-xl shadow-sm border border-slate-200 p-4 sticky top-24">
               {tabs.map((tab) => {
                 const Icon = tab.icon
                 return (
@@ -83,8 +63,8 @@ export default function AdminDashboard() {
                     key={tab.id}
                     onClick={() => setActiveTab(tab.id as Tab)}
                     className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg mb-2 font-semibold transition-all ${activeTab === tab.id
-                      ? 'bg-primary text-black'
-                      : 'text-white hover:bg-gray-700'
+                      ? 'bg-primary text-white shadow-sm'
+                      : 'text-slate-600 hover:bg-slate-50'
                       }`}
                   >
                     <Icon className="w-5 h-5" />
@@ -111,4 +91,3 @@ export default function AdminDashboard() {
     </div>
   )
 }
-

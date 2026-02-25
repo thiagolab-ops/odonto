@@ -127,29 +127,29 @@ export default function ConfiguracoesTab() {
 
   return (
     <div className="space-y-8">
-      {/* Seção: Configurações do Salão */}
-      <div className="bg-gray-800 rounded-xl border border-primary/30 p-6">
+      {/* Seção: Configurações da Clínica */}
+      <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6">
         <div className="flex items-center gap-3 mb-6">
-          <div className="bg-primary/20 p-3 rounded-lg">
+          <div className="bg-primary/10 p-3 rounded-lg border border-primary/20">
             <Truck className="w-6 h-6 text-primary" />
           </div>
           <div>
-            <h2 className="text-2xl font-bold text-white">Configurações do Salão</h2>
+            <h2 className="text-2xl font-bold text-slate-800">Configurações da Clínica</h2>
           </div>
         </div>
 
         <form onSubmit={handleSaveDeliverySettings} className="space-y-6">
           {/* Chave PIX */}
-          <div className="p-4 bg-gray-700/50 rounded-lg border border-primary/20">
-            <label className="text-white font-semibold block mb-2">Chave PIX</label>
+          <div className="p-4 bg-slate-50 rounded-xl border border-slate-200 shadow-sm">
+            <label className="text-slate-800 font-bold block mb-2">Chave PIX</label>
             <input
               type="text"
               value={pixKey}
               onChange={(e) => setPixKey(e.target.value)}
-              className="w-full bg-gray-700 text-white px-4 py-3 rounded-lg border border-primary/30 focus:border-primary focus:outline-none"
-              placeholder="belaestetica@pix.com.br"
+              className="w-full bg-white text-slate-900 font-medium px-4 py-3 rounded-lg border border-slate-300 focus:border-primary focus:outline-none transition shadow-sm"
+              placeholder="odontoprime@pix.com.br"
             />
-            <p className="text-gray-400 text-sm mt-2">Chave PIX exibida para os clientes no pagamento</p>
+            <p className="text-slate-500 text-sm mt-2 font-medium">Chave PIX exibida para os clientes no pagamento</p>
           </div>
 
           {/* Preview */}
@@ -173,14 +173,14 @@ export default function ConfiguracoesTab() {
           <button
             type="submit"
             disabled={isSavingSettings}
-            className="w-full bg-primary text-black py-3 rounded-lg font-bold hover:bg-primary/90 disabled:opacity-50 flex items-center justify-center gap-2"
+            className="w-full bg-primary text-white py-3 rounded-xl font-bold hover:bg-blue-600 transition shadow-sm disabled:opacity-50 flex items-center justify-center gap-2"
           >
             {isSavingSettings ? (
               <Loader2 className="w-5 h-5 animate-spin" />
             ) : (
               <>
                 <Save className="w-5 h-5" />
-                Salvar Configurações do Salão
+                Salvar Configurações da Clínica
               </>
             )}
           </button>
@@ -188,27 +188,27 @@ export default function ConfiguracoesTab() {
       </div>
 
       {/* Seção: Segurança */}
-      < div className="bg-gray-800 rounded-xl border border-primary/30 p-6" >
+      < div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6" >
         <div className="flex items-center gap-3 mb-6">
-          <div className="bg-red-500/20 p-3 rounded-lg">
-            <Shield className="w-6 h-6 text-red-400" />
+          <div className="bg-red-50 p-3 rounded-lg border border-red-100">
+            <Shield className="w-6 h-6 text-red-500" />
           </div>
           <div>
-            <h2 className="text-2xl font-bold text-white">Segurança</h2>
-            <p className="text-gray-400 text-sm">Altere sua senha de acesso ao painel administrativo</p>
+            <h2 className="text-2xl font-bold text-slate-800">Segurança</h2>
+            <p className="text-slate-500 font-medium text-sm">Altere sua senha de acesso ao painel administrativo</p>
           </div>
         </div>
 
         <form onSubmit={handleChangePassword} className="space-y-4">
           {/* Senha Atual */}
           <div>
-            <label className="text-white font-semibold block mb-2">Senha Atual</label>
+            <label className="text-slate-800 font-bold block mb-2">Senha Atual</label>
             <div className="relative">
               <input
                 type={showCurrentPassword ? 'text' : 'password'}
                 value={currentPassword}
                 onChange={(e) => setCurrentPassword(e.target.value)}
-                className="w-full bg-gray-700 text-white px-4 py-3 pr-12 rounded-lg border border-primary/30 focus:border-primary focus:outline-none"
+                className="w-full bg-slate-50 text-slate-900 px-4 py-3 pr-12 rounded-lg border border-slate-200 focus:border-primary focus:outline-none transition shadow-sm"
                 placeholder="Digite sua senha atual"
               />
               <button
@@ -223,19 +223,19 @@ export default function ConfiguracoesTab() {
 
           {/* Nova Senha */}
           <div>
-            <label className="text-white font-semibold block mb-2">Nova Senha</label>
+            <label className="text-slate-800 font-bold block mb-2">Nova Senha</label>
             <div className="relative">
               <input
                 type={showNewPassword ? 'text' : 'password'}
                 value={newPassword}
                 onChange={(e) => setNewPassword(e.target.value)}
-                className="w-full bg-gray-700 text-white px-4 py-3 pr-12 rounded-lg border border-primary/30 focus:border-primary focus:outline-none"
+                className="w-full bg-slate-50 text-slate-900 px-4 py-3 pr-12 rounded-lg border border-slate-200 focus:border-primary focus:outline-none transition shadow-sm"
                 placeholder="Digite a nova senha (mínimo 6 caracteres)"
               />
               <button
                 type="button"
                 onClick={() => setShowNewPassword(!showNewPassword)}
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-white"
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600"
               >
                 {showNewPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
               </button>
@@ -256,19 +256,19 @@ export default function ConfiguracoesTab() {
 
           {/* Confirmar Nova Senha */}
           <div>
-            <label className="text-white font-semibold block mb-2">Confirmar Nova Senha</label>
+            <label className="text-slate-800 font-bold block mb-2">Confirmar Nova Senha</label>
             <div className="relative">
               <input
                 type={showConfirmPassword ? 'text' : 'password'}
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
-                className="w-full bg-gray-700 text-white px-4 py-3 pr-12 rounded-lg border border-primary/30 focus:border-primary focus:outline-none"
+                className="w-full bg-slate-50 text-slate-900 px-4 py-3 pr-12 rounded-lg border border-slate-200 focus:border-primary focus:outline-none transition shadow-sm"
                 placeholder="Confirme a nova senha"
               />
               <button
                 type="button"
                 onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-white"
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600"
               >
                 {showConfirmPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
               </button>
