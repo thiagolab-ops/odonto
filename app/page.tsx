@@ -25,7 +25,7 @@ export default function Home() {
             <h1 className="text-secondary dark:text-white text-lg font-bold tracking-tight">OdontoPrime</h1>
           </div>
           <button className="bg-secondary/10 dark:bg-white/10 hover:bg-secondary/20 dark:hover:bg-white/20 text-secondary dark:text-white text-sm font-semibold py-2 px-4 rounded-full transition-colors duration-200">
-            Contact
+            Contato
           </button>
         </div>
       </header>
@@ -42,20 +42,20 @@ export default function Home() {
         <div className="absolute inset-0 z-10 bg-gradient-to-t from-secondary/90 via-secondary/40 to-transparent"></div>
         <div className="absolute inset-0 z-10 bg-gradient-to-b from-white/10 to-transparent"></div>
 
-        <div className="relative z-20 h-full flex flex-col justify-end px-6 pb-12 pt-24 text-center items-center">
+        <div className="relative z-20 h-full flex flex-col justify-end px-6 pb-12 pt-24 text-center items-center max-w-screen-md mx-auto w-full">
           <span className="inline-block px-3 py-1 mb-4 text-xs font-bold tracking-wider text-white uppercase bg-white/20 backdrop-blur-md rounded-full border border-white/10">
-            Premium Dental Care
+            Odontologia Premium
           </span>
           <h2 className="text-4xl md:text-5xl font-extrabold text-white leading-tight tracking-tight mb-4 drop-shadow-lg">
-            Your Perfect Smile <br /><span className="text-primary">Starts Here</span>
+            O seu sorriso perfeito <br /><span className="text-primary">começa aqui.</span>
           </h2>
           <p className="text-slate-200 text-base md:text-lg font-medium leading-relaxed mb-8 max-w-xs mx-auto drop-shadow-md">
-            Experience world-class dental treatments designed for your confidence and comfort.
+            Experimente tratamentos odontológicos de classe mundial para sua confiança e conforto.
           </p>
           <Link href="/tratamentos" className="relative group w-full max-w-xs overflow-hidden rounded-xl bg-primary py-4 px-8 text-secondary font-bold text-lg shadow-[0_0_20px_rgba(7,182,213,0.4)] transition-all hover:scale-[1.02] active:scale-[0.98] inline-flex items-center justify-center">
             <div className="absolute inset-0 w-full h-full bg-white/20 group-hover:animate-[pulse_1.5s_ease-in-out_infinite]"></div>
             <span className="relative flex items-center justify-center gap-2">
-              Schedule Evaluation
+              Agendar Avaliação
               <span className="material-symbols-outlined text-xl">calendar_month</span>
             </span>
           </Link>
@@ -63,28 +63,28 @@ export default function Home() {
       </section>
 
       {/* Trust Stats Section */}
-      <section className="py-10 px-6">
+      <section className="py-10 px-6 max-w-screen-md mx-auto w-full">
         <div className="flex justify-between items-center divide-x divide-slate-200 dark:divide-slate-700">
           <div className="flex-1 text-center px-2">
             <p className="text-3xl font-black text-secondary dark:text-white">10<span className="text-primary">+</span></p>
-            <p className="text-xs font-semibold text-text-muted uppercase tracking-wide mt-1">Years Experience</p>
+            <p className="text-xs font-semibold text-text-muted uppercase tracking-wide mt-1">Anos de Experiência</p>
           </div>
           <div className="flex-1 text-center px-2">
             <p className="text-3xl font-black text-secondary dark:text-white">5k<span className="text-primary">+</span></p>
-            <p className="text-xs font-semibold text-text-muted uppercase tracking-wide mt-1">Happy Smiles</p>
+            <p className="text-xs font-semibold text-text-muted uppercase tracking-wide mt-1">Sorrisos Transformados</p>
           </div>
           <div className="flex-1 text-center px-2">
             <p className="text-3xl font-black text-secondary dark:text-white">4.9</p>
-            <p className="text-xs font-semibold text-text-muted uppercase tracking-wide mt-1">Star Rating</p>
+            <p className="text-xs font-semibold text-text-muted uppercase tracking-wide mt-1">Avaliação Média</p>
           </div>
         </div>
       </section>
 
       {/* Specialties Section (Horizontal Scroll) */}
-      <section className="py-4">
+      <section className="py-4 max-w-screen-md mx-auto w-full">
         <div className="flex items-center justify-between px-6 mb-6">
-          <h3 className="text-2xl font-bold text-secondary dark:text-white">Our Specialties</h3>
-          <Link href="/tratamentos" className="text-primary text-sm font-bold hover:text-primary/80 transition-colors">View All</Link>
+          <h3 className="text-2xl font-bold text-secondary dark:text-white">Nossas Especialidades</h3>
+          <Link href="/tratamentos" className="text-primary text-sm font-bold hover:text-primary/80 transition-colors">Ver Mais</Link>
         </div>
 
         {/* Snap Container */}
@@ -98,9 +98,9 @@ export default function Home() {
                 <span className="material-symbols-outlined block">all_inclusive</span>
               </div>
               <h4 className="text-xl font-bold text-secondary dark:text-white mb-2">Invisalign</h4>
-              <p className="text-text-muted text-sm leading-relaxed mb-4">Clear aligners for a seamless, practically invisible smile correction journey.</p>
+              <p className="text-text-muted text-sm leading-relaxed mb-4">Alinhadores transparentes para uma jornada de correção quase invisível.</p>
               <div className="mt-auto pt-4 border-t border-slate-100 dark:border-slate-700 flex items-center text-primary font-bold text-sm">
-                Learn More <span className="material-symbols-outlined text-sm ml-1">arrow_forward</span>
+                Saiba Mais <span className="material-symbols-outlined text-sm ml-1">arrow_forward</span>
               </div>
             </div>
           </Link>
@@ -113,10 +113,10 @@ export default function Home() {
               <div className="absolute -top-6 right-5 bg-primary text-secondary p-3 rounded-xl shadow-lg">
                 <span className="material-symbols-outlined block">auto_awesome</span>
               </div>
-              <h4 className="text-xl font-bold text-secondary dark:text-white mb-2">Porcelain Veneers</h4>
-              <p className="text-text-muted text-sm leading-relaxed mb-4">Transform your smile instantly with custom-made, ultra-thin ceramic shells.</p>
+              <h4 className="text-xl font-bold text-secondary dark:text-white mb-2">Lentes de Porcelana</h4>
+              <p className="text-text-muted text-sm leading-relaxed mb-4">Transforme seu sorriso instantaneamente com lentes de cerâmica ultrafinas.</p>
               <div className="mt-auto pt-4 border-t border-slate-100 dark:border-slate-700 flex items-center text-primary font-bold text-sm">
-                Learn More <span className="material-symbols-outlined text-sm ml-1">arrow_forward</span>
+                Saiba Mais <span className="material-symbols-outlined text-sm ml-1">arrow_forward</span>
               </div>
             </div>
           </Link>
@@ -129,10 +129,10 @@ export default function Home() {
               <div className="absolute -top-6 right-5 bg-primary text-secondary p-3 rounded-xl shadow-lg">
                 <span className="material-symbols-outlined block">change_circle</span>
               </div>
-              <h4 className="text-xl font-bold text-secondary dark:text-white mb-2">Dental Implants</h4>
-              <p className="text-text-muted text-sm leading-relaxed mb-4">Permanent, natural-looking solution for replacing missing teeth effectively.</p>
+              <h4 className="text-xl font-bold text-secondary dark:text-white mb-2">Implantes Dentários</h4>
+              <p className="text-text-muted text-sm leading-relaxed mb-4">Solução permanente e natural para substituir dentes perdidos.</p>
               <div className="mt-auto pt-4 border-t border-slate-100 dark:border-slate-700 flex items-center text-primary font-bold text-sm">
-                Learn More <span className="material-symbols-outlined text-sm ml-1">arrow_forward</span>
+                Saiba Mais <span className="material-symbols-outlined text-sm ml-1">arrow_forward</span>
               </div>
             </div>
           </Link>
@@ -140,15 +140,15 @@ export default function Home() {
       </section>
 
       {/* Testimonials Section */}
-      <section className="px-6 py-8 bg-white dark:bg-slate-900 rounded-3xl mx-4 shadow-sm border border-slate-100 dark:border-slate-800">
+      <section className="px-6 py-8 bg-white dark:bg-slate-900 rounded-3xl shadow-sm border border-slate-100 dark:border-slate-800 max-w-screen-md mx-auto w-full my-8">
         <div className="flex items-center gap-2 mb-6">
           <span className="material-symbols-outlined text-primary text-3xl">format_quote</span>
-          <h3 className="text-xl font-bold text-secondary dark:text-white">What patients say</h3>
+          <h3 className="text-xl font-bold text-secondary dark:text-white">O que nossos pacientes dizem</h3>
         </div>
         <div className="relative">
           <div className="space-y-4">
             <p className="text-lg font-medium text-secondary dark:text-slate-200 italic leading-relaxed">
-              &quot;OdontoPrime completely changed my confidence. The veneers look so natural, I can&apos;t stop smiling! The staff was incredibly professional.&quot;
+              &quot;A OdontoPrime mudou completamente a minha confiança. As lentes ficaram tão naturais que não consigo parar de sorrir! A equipe foi incrivelmente profissional.&quot;
             </p>
             <div className="flex items-center gap-4 mt-6">
               <div className="w-12 h-12 rounded-full bg-gray-200 overflow-hidden relative">
@@ -178,25 +178,25 @@ export default function Home() {
 
       {/* Footer */}
       <footer className="mt-12 px-6 pt-12 pb-24 bg-secondary text-white rounded-t-[2rem]">
-        <div className="flex flex-col gap-8">
+        <div className="flex flex-col gap-8 max-w-screen-md mx-auto w-full">
           <div className="flex items-center gap-2">
             <span className="material-symbols-outlined text-primary text-3xl">dentistry</span>
             <span className="text-2xl font-bold tracking-tight">OdontoPrime</span>
           </div>
           <div className="grid grid-cols-2 gap-8">
             <div className="flex flex-col gap-3">
-              <h5 className="text-primary font-bold text-sm uppercase tracking-wider">Services</h5>
-              <Link className="text-slate-400 text-sm hover:text-white transition-colors" href="/tratamentos">Implants</Link>
-              <Link className="text-slate-400 text-sm hover:text-white transition-colors" href="/tratamentos">Veneers</Link>
-              <Link className="text-slate-400 text-sm hover:text-white transition-colors" href="/tratamentos">Whitening</Link>
+              <h5 className="text-primary font-bold text-sm uppercase tracking-wider">Serviços</h5>
+              <Link className="text-slate-400 text-sm hover:text-white transition-colors" href="/tratamentos">Implantes</Link>
+              <Link className="text-slate-400 text-sm hover:text-white transition-colors" href="/tratamentos">Lentes</Link>
+              <Link className="text-slate-400 text-sm hover:text-white transition-colors" href="/tratamentos">Clareamento</Link>
               <Link className="text-slate-400 text-sm hover:text-white transition-colors" href="/tratamentos">Checkups</Link>
             </div>
             <div className="flex flex-col gap-3">
-              <h5 className="text-primary font-bold text-sm uppercase tracking-wider">Clinic</h5>
-              <Link className="text-slate-400 text-sm hover:text-white transition-colors" href="#">About Us</Link>
-              <Link className="text-slate-400 text-sm hover:text-white transition-colors" href="#">Doctors</Link>
-              <Link className="text-slate-400 text-sm hover:text-white transition-colors" href="#">Locations</Link>
-              <Link className="text-slate-400 text-sm hover:text-white transition-colors" href="#">Contact</Link>
+              <h5 className="text-primary font-bold text-sm uppercase tracking-wider">Clínica</h5>
+              <Link className="text-slate-400 text-sm hover:text-white transition-colors" href="#">Sobre nós</Link>
+              <Link className="text-slate-400 text-sm hover:text-white transition-colors" href="#">Especialistas</Link>
+              <Link className="text-slate-400 text-sm hover:text-white transition-colors" href="#">Localização</Link>
+              <Link className="text-slate-400 text-sm hover:text-white transition-colors" href="#">Contato</Link>
             </div>
           </div>
 
@@ -209,7 +209,11 @@ export default function Home() {
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.85-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"></path></svg>
               </div>
             </div>
-            <p className="text-xs text-slate-500">© 2024 OdontoPrime Clinic. All rights reserved.</p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-between items-start sm:items-center text-sm text-slate-400">
+              <p>Av. Paulista, 1000 - São Paulo, SP</p>
+              <p>Contato: (11) 99999-9999</p>
+            </div>
+            <p className="text-xs text-slate-500 mt-4">© 2024 OdontoPrime Clinic. Todos os direitos reservados.</p>
           </div>
         </div>
       </footer>
