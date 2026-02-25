@@ -12,28 +12,26 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: "Formato de mensagens inválido" }, { status: 400 });
     }
 
-    // Buscar carros disponíveis para o bot ter contexto do estoque real
-    const vehicles = await prisma.vehicle.findMany({
+    // Buscar tratamentos disponíveis para o bot ter contexto
+    const treatments = await prisma.treatment.findMany({
       where: { status: "AVAILABLE" },
-      select: { brand: true, model: true, year: true, price: true }
+      select: { title: true, price: true, duration: true }
     });
 
-    const stockInfo = vehicles.map(v => `${v.brand} ${v.model} (${v.year}) - R$ ${v.price.toLocaleString('pt-BR')}`).join(", ");
+    const stockInfo = treatments.map((t: any) => `${t.title} (${t.duration}) - A partir de R$ ${t.price.toLocaleString('pt-BR')}`).join("\n");
 
     const systemPrompt = {
       role: "system",
-      content: `Você é um Consultor de Vendas Premium da concessionária Luxe Motors. 
-      Seja extremamente educado, sofisticado, persuasivo e conciso nas suas respostas (1 a 3 parágrafos curtos no máximo). 
-      Seu objetivo principal é transparecer autoridade no mercado de luxo e tentar sutilmente convencer o cliente a agendar um Test Drive ou uma Visita à loja.
-      Nunca invente carros que não estão no estoque de jeito nenhum.
-      Estoque atual disponível na loja agora: ${stockInfo || "Nenhum carro cadastrado no momento"}.
-      Se o cliente perguntar se tem um carro X, e não estiver na lista de estoque, diga educadamente que no momento não temos aquela unidade, mas sugira um similar da lista de estoque.
-      Se o cliente perguntar sobre financiamento, taxas, ou entrada, diga que temos "condições exclusivas e taxas especiais de financiamento premium" e peça para ele "agendar uma visita presencial para uma simulação personalizada".
-      Fale sempre em Português do Brasil de forma muito natural. Não use formatações markdown exageradas (apenas bold para nomes de carros ou preços se necessário).`
+      content: `Você é a Assistente Virtual da clínica OdontoPrime. 
+      Seja extremamente educada, acolhedora e empática. 
+      Seu objetivo é tirar dúvidas sobre procedimentos odontológicos (lentes, implantes, clareamento, etc), acalmar pacientes que tenham medo de dentista e incentivá-los a agendar uma Avaliação Gratuita.
+      Estoque de tratamentos disponíveis: ${stockInfo || "Tratamentos padrão"}.
+      Nunca invente preços; diga que os valores exatos são passados na avaliação clínica. 
+      Fale em Português do Brasil, de forma clara e natural.`
     };
 
     const response = await groq.chat.completions.create({
-      model: process.env.GROQ_MODEL || "llama-3.1-8b-instant",
+      model: process.env.GROQ_MODEL || "llama-3.3-70b-versatile",
       messages: [systemPrompt, ...messages],
       temperature: 0.6,
       max_tokens: 500,

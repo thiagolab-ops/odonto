@@ -31,14 +31,14 @@ const AVAILABLE_TIMES = [
 
 export default function AgendamentoPage() {
     const searchParams = useSearchParams()
-    const urlVehicleId = searchParams.get('vehicleId')
+    const urlTreatmentId = searchParams.get('treatmentId')
 
     const [loading, setLoading] = useState(true)
-    const [vehicles, setVehicles] = useState<any[]>([])
+    const [treatments, setTreatments] = useState<any[]>([])
 
     // Form State
-    const [service, setService] = useState('Test Drive')
-    const [vehicleId, setVehicleId] = useState(urlVehicleId || '')
+    const [service, setService] = useState('Avaliação')
+    const [treatmentId, setTreatmentId] = useState(urlTreatmentId || '')
     const [selectedDate, setSelectedDate] = useState<Date | null>(null)
     const [selectedTime, setSelectedTime] = useState('')
 
@@ -54,20 +54,20 @@ export default function AgendamentoPage() {
     const [currentMonth, setCurrentMonth] = useState(new Date(today.getFullYear(), today.getMonth(), 1))
 
     useEffect(() => {
-        const fetchVehicles = async () => {
+        const fetchTreatments = async () => {
             try {
-                const res = await fetch('/api/veiculos')
+                const res = await fetch('/api/tratamentos')
                 if (res.ok) {
                     const data = await res.json()
-                    setVehicles(data.filter((v: any) => v.status === 'AVAILABLE'))
+                    setTreatments(data.filter((v: any) => v.status === 'AVAILABLE'))
                 }
             } catch (err) {
-                console.error("Failed to load vehicles", err)
+                console.error("Failed to load treatments", err)
             } finally {
                 setLoading(false)
             }
         }
-        fetchVehicles()
+        fetchTreatments()
     }, [])
 
     const handleMonthChange = (offset: number) => {
@@ -91,7 +91,7 @@ export default function AgendamentoPage() {
 
             const payload = {
                 service,
-                vehicleId: vehicleId || null,
+                treatmentId: treatmentId || null,
                 date: scheduledDateTime.toISOString(),
                 customerName,
                 customerPhone
@@ -127,7 +127,7 @@ export default function AgendamentoPage() {
                     <p className="text-text-secondary mb-8">
                         Seu pedido para <strong>{service}</strong> foi recebido. Um de nossos consultores entrará em contato em breve para confirmar os detalhes.
                     </p>
-                    <Link href="/veiculos" className="bg-primary text-background-dark font-bold px-8 py-3 rounded-xl uppercase tracking-wider block hover:bg-primary-dark transition">
+                    <Link href="/tratamentos" className="bg-primary text-background-dark font-bold px-8 py-3 rounded-xl uppercase tracking-wider block hover:bg-primary-dark transition">
                         Voltar para a Vitrine
                     </Link>
                 </div>
@@ -143,12 +143,12 @@ export default function AgendamentoPage() {
             <div className="max-w-4xl mx-auto flex flex-col gap-8">
 
                 <div className="text-center md:text-left">
-                    <Link href="/veiculos" className="text-text-secondary hover:text-white flex items-center gap-2 mb-4 justify-center md:justify-start">
+                    <Link href="/tratamentos" className="text-text-secondary hover:text-white flex items-center gap-2 mb-4 justify-center md:justify-start">
                         <span className="material-symbols-outlined text-sm">arrow_back</span>
                         Voltar
                     </Link>
-                    <h1 className="text-4xl font-black uppercase tracking-tight">Agendar <span className="text-primary">Visita</span></h1>
-                    <p className="text-text-secondary mt-2">Escolha o serviço desejado, o veículo e o melhor horário para você.</p>
+                    <h1 className="text-4xl font-black uppercase tracking-tight">Agendar <span className="text-primary">Consulta/Avaliação</span></h1>
+                    <p className="text-text-secondary mt-2">Escolha o serviço desejado, o tratamento e o melhor horário para você.</p>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -158,7 +158,7 @@ export default function AgendamentoPage() {
                         <div>
                             <label className="block text-sm font-bold text-gray-300 uppercase tracking-wider mb-2">Serviço Desejado</label>
                             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                                {["Test Drive", "Revisão", "Avaliação"].map(s => (
+                                {["Avaliação", "Procedimento", "Retorno"].map(s => (
                                     <button
                                         type="button"
                                         key={s}
@@ -171,20 +171,20 @@ export default function AgendamentoPage() {
                             </div>
                         </div>
 
-                        {(service === 'Test Drive' || service === 'Avaliação') && (
+                        {(service === 'Avaliação' || service === 'Procedimento') && (
                             <div>
-                                <label className="block text-sm font-bold text-gray-300 uppercase tracking-wider mb-2">Veículo de Interesse</label>
+                                <label className="block text-sm font-bold text-gray-300 uppercase tracking-wider mb-2">Tratamento de Interesse</label>
                                 {loading ? (
                                     <div className="p-3 bg-background-dark rounded-xl border border-surface-border animate-pulse h-12"></div>
                                 ) : (
                                     <select
-                                        value={vehicleId}
-                                        onChange={e => setVehicleId(e.target.value)}
+                                        value={treatmentId}
+                                        onChange={e => setTreatmentId(e.target.value)}
                                         className="w-full bg-background-dark border border-surface-border rounded-xl p-3 text-white appearance-none focus:border-primary outline-none transition"
                                     >
                                         <option value="">Nenhum específico</option>
-                                        {vehicles.map(v => (
-                                            <option key={v.id} value={v.id}>{v.brand} {v.model} ({v.year})</option>
+                                        {treatments.map(t => (
+                                            <option key={t.id} value={t.id}>{t.title} - R$ {t.price.toFixed(2)}</option>
                                         ))}
                                     </select>
                                 )}
