@@ -3,6 +3,9 @@ import { authOptions } from '@/lib/auth-options'
 import { redirect } from 'next/navigation'
 import AdminDashboard from './_components/admin-dashboard'
 
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+
 export default async function DashboardPage() {
   const session = await getServerSession(authOptions)
 

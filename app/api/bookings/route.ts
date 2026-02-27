@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server'
 import { prisma } from '@/lib/db'
+import { revalidatePath } from 'next/cache'
 
 export async function POST(req: Request) {
     try {
@@ -60,6 +61,9 @@ export async function POST(req: Request) {
 
         const booking = await prisma.booking.create({ data })
 
+        revalidatePath('/admin')
+        revalidatePath('/admin/dashboard')
+
         return NextResponse.json(booking, { status: 201 })
     } catch (error) {
         console.error("ERRO BOOKING POST:", error)
@@ -103,7 +107,7 @@ export async function GET(req: Request) {
                 }
             },
             orderBy: {
-                date: 'asc'
+                createdAt: 'desc'
             }
         })
 
