@@ -31,24 +31,29 @@ export default function Home() {
       </header>
 
       {/* Hero Section */}
-      <section className="relative w-full h-screen overflow-hidden rounded-b-[2.5rem] bg-transparent">
-        {/* Container do Vídeo Absoluto no Fundo */}
-        <div className="absolute inset-0 w-full h-full -z-10">
-          <video
-            autoPlay
-            loop
-            muted
-            playsInline
-            className="w-full h-full object-cover opacity-60"
-          >
-            <source src="/hero-video.mp4" type="video/mp4" />
-          </video>
-          {/* Overlay gradiente para escurecer o vídeo e dar leitura ao texto */}
-          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/40 to-black/90"></div>
-        </div>
+      <section className="relative w-full min-h-screen flex items-center justify-center bg-slate-950 overflow-hidden">
 
-        {/* Conteúdo da Frente (Textos e Botões) */}
-        <div className="relative z-10 h-full flex flex-col justify-center items-center max-w-screen-md mx-auto w-full px-6 pb-12 pt-24 text-center">
+        {/* Vídeo Background com Fallback Escuro */}
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover opacity-40 pointer-events-none"
+        >
+          {/* Tenta rodar o vídeo local do usuário */}
+          <source src="/hero-video.mp4" type="video/mp4" />
+          <source src="/hero-video.webm" type="video/webm" />
+          {/* Plano B: Se o local falhar, roda este vídeo externo estético para não quebrar o layout */}
+          <source src="https://cdn.pixabay.com/video/2020/05/21/40017-424606117_tiny.mp4" type="video/mp4" />
+        </video>
+
+        {/* Overlay de Gradiente para garantir a leitura perfeita das letras brancas */}
+        <div className="absolute inset-0 bg-gradient-to-b from-slate-950/80 via-slate-950/40 to-slate-950/90 pointer-events-none"></div>
+
+        {/* CONTEÚDO ORIGINAL DA ODONTOPRIME (Mantenha o conteúdo existente aqui dentro) */}
+        <div className="relative z-10 flex flex-col items-center justify-center text-center px-4 max-w-5xl mx-auto pt-20">
+
           <span className="inline-block px-3 py-1 mb-4 text-xs font-bold tracking-wider text-white uppercase bg-white/20 backdrop-blur-md rounded-full border border-white/10">
             Odontologia Premium
           </span>
@@ -65,6 +70,7 @@ export default function Home() {
               <span className="material-symbols-outlined text-xl">calendar_month</span>
             </span>
           </Link>
+
         </div>
       </section>
 
