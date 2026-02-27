@@ -31,19 +31,24 @@ export default function Home() {
       </header>
 
       {/* Hero Section */}
-      <section className="relative h-[75vh] w-full overflow-hidden rounded-b-[2.5rem] shadow-xl">
-        <div className="absolute inset-0 z-0">
-          <video autoPlay loop muted playsInline className="absolute inset-0 w-full h-full object-cover z-0 opacity-40 mix-blend-overlay pointer-events-none">
+      <section className="relative w-full h-screen overflow-hidden rounded-b-[2.5rem] bg-transparent">
+        {/* Container do Vídeo Absoluto no Fundo */}
+        <div className="absolute inset-0 w-full h-full -z-10">
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="w-full h-full object-cover opacity-60"
+          >
             <source src="/hero-video.mp4" type="video/mp4" />
-            <source src="/hero-video.webm" type="video/webm" />
           </video>
+          {/* Overlay gradiente para escurecer o vídeo e dar leitura ao texto */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/40 to-black/90"></div>
         </div>
 
-        {/* Gradient Overlay */}
-        <div className="absolute inset-0 z-10 bg-gradient-to-t from-secondary/90 via-secondary/40 to-transparent"></div>
-        <div className="absolute inset-0 z-10 bg-gradient-to-b from-white/10 to-transparent"></div>
-
-        <div className="relative z-20 h-full flex flex-col justify-end px-6 pb-12 pt-24 text-center items-center max-w-screen-md mx-auto w-full">
+        {/* Conteúdo da Frente (Textos e Botões) */}
+        <div className="relative z-10 h-full flex flex-col justify-center items-center max-w-screen-md mx-auto w-full px-6 pb-12 pt-24 text-center">
           <span className="inline-block px-3 py-1 mb-4 text-xs font-bold tracking-wider text-white uppercase bg-white/20 backdrop-blur-md rounded-full border border-white/10">
             Odontologia Premium
           </span>
