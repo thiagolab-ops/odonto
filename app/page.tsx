@@ -33,8 +33,8 @@ export default function Home() {
       {/* Hero Section */}
       <section className="relative h-[75vh] w-full overflow-hidden rounded-b-[2.5rem] shadow-xl">
         <div className="absolute inset-0 z-0">
-          <video autoPlay loop muted playsInline className="w-full h-full object-cover">
-            <source src="/hero-video.mp4" type="video/mp4" />
+          <video autoPlay loop muted playsInline className="absolute inset-0 w-full h-full object-cover z-0 opacity-40 mix-blend-overlay pointer-events-none">
+            <source src="https://cdn.pixabay.com/video/2019/02/22/21570-318536294_tiny.mp4" type="video/mp4" />
           </video>
         </div>
 

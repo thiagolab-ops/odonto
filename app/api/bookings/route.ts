@@ -5,10 +5,10 @@ import { revalidatePath } from 'next/cache'
 export async function POST(req: Request) {
     try {
         const body = await req.json()
-        const { service, vehicleId, date, customerName, customerPhone } = body
+        const { service, treatmentId, date, customerName, customerPhone } = body
 
         if (!service || !date || !customerName || !customerPhone) {
-            return NextResponse.json({ error: 'Campos obrigatórios faltando' }, { status: 400 })
+            return NextResponse.json({ success: false, error: 'Campos obrigatórios faltando' }, { status: 400 })
         }
 
         // Check if there is already a booking for this exact date and time (Simple conflict check)
@@ -55,19 +55,19 @@ export async function POST(req: Request) {
             status: 'PENDING'
         }
 
-        if (vehicleId) {
-            data.vehicleId = vehicleId
+        if (treatmentId) {
+            data.treatmentId = treatmentId
         }
 
         const booking = await prisma.booking.create({ data })
 
-        revalidatePath('/admin')
-        revalidatePath('/admin/dashboard')
+        revalidatePath('/admin/dashboard', 'page')
+        revalidatePath('/admin/dashboard', 'layout')
 
-        return NextResponse.json(booking, { status: 201 })
+        return NextResponse.json({ success: true, booking }, { status: 201 })
     } catch (error) {
-        console.error("ERRO BOOKING POST:", error)
-        return NextResponse.json({ error: 'Erro interno ao criar agendamento' }, { status: 500 })
+        console.error("ERRO AO SALVAR AGENDAMENTO:", error)
+        return NextResponse.json({ success: false, error: 'Falha ao salvar no banco de dados', details: String(error) }, { status: 500 })
     }
 }
 
@@ -102,8 +102,8 @@ export async function GET(req: Request) {
                 user: {
                     select: { name: true, email: true }
                 },
-                vehicle: {
-                    select: { brand: true, model: true, year: true }
+                treatment: {
+                    select: { title: true, price: true }
                 }
             },
             orderBy: {
